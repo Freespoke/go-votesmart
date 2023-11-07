@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"io"
 	"net/http"
 	"net/url"
 )
@@ -39,20 +40,24 @@ func (c *Client) get(ctx context.Context, path string, values *url.Values, dst a
 		return fmt.Errorf("unexpected response status code %d", res.StatusCode)
 	}
 
-	var resp struct {
-		json.RawMessage
+	b, err := io.ReadAll(res.Body)
+	if err != nil {
+		return err
+	}
+
+	var errorval struct {
 		Error struct {
 			ErrorMessage string `json:"errorMessage"`
 		} `json:"error"`
 	}
 
-	if err := json.NewDecoder(res.Body).Decode(&resp); err != nil {
+	if err := json.Unmarshal(b, &errorval); err != nil {
 		return err
 	}
 
-	if resp.Error.ErrorMessage != "" {
-		return errors.New(resp.Error.ErrorMessage)
+	if errorval.Error.ErrorMessage != "" {
+		return errors.New(errorval.Error.ErrorMessage)
 	}
 
-	return json.Unmarshal(resp.RawMessage, dst)
+	return json.Unmarshal(b, dst)
 }

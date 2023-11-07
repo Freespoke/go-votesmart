@@ -110,10 +110,10 @@ type BallotMeasure interface {
 	// MeasureGetMeasuresByYearState returns a list of state ballot measures in
 	// a given year.
 	// See http://api.votesmart.org/docs/Measure.html for details.
-	MeasureGetMeasuresByYearState(ctx context.Context, year string, stateID string) (any, error)
+	MeasureGetMeasuresByYearState(ctx context.Context, year string, stateID string) (*votesmarttypes.MeasureGetMeasuresByYearState, error)
 	// MeasureGetMeasure returns a single Ballot Measure detail.
 	// See http://api.votesmart.org/docs/Measure.html for details.
-	MeasureGetMeasure(ctx context.Context, measureID string) (any, error)
+	MeasureGetMeasure(ctx context.Context, measureID string) (*votesmarttypes.MeasureGetMeasure, error)
 }
 
 type CandidateBio interface {
@@ -164,42 +164,42 @@ type Candidates interface {
 type Committee interface {
 	// CommitteeGetTypes returns the committee types (house, senate, joint, etc).
 	// See http://api.votesmart.org/docs/Committee.html for details.
-	CommitteeGetTypes(ctx context.Context) (any, error)
+	CommitteeGetTypes(ctx context.Context) (*votesmarttypes.CommitteeGetTypes, error)
 	// CommitteeGetCommitteesByTypeState returns a list of committees that fit
 	// the criteria.
 	// See http://api.votesmart.org/docs/Committee.html for details.
-	CommitteeGetCommitteesByTypeState(ctx context.Context, typeID, stateID string) (any, error)
+	CommitteeGetCommitteesByTypeState(ctx context.Context, typeID, stateID string) (*votesmarttypes.CommitteeGetCommitteesByTypeState, error)
 	// CommitteeGetCommittee returns detailed committee data.
 	// See http://api.votesmart.org/docs/Committee.html for details.
-	CommitteeGetCommittee(ctx context.Context, committeeID string) (any, error)
+	CommitteeGetCommittee(ctx context.Context, committeeID string) (*votesmarttypes.CommitteeGetCommittee, error)
 	// CommitteeGetCommitteeMembers returns members of the committee.
 	// See http://api.votesmart.org/docs/Committee.html for details.
-	CommitteeGetCommitteeMembers(ctx context.Context, committeeID string) (any, error)
+	CommitteeGetCommitteeMembers(ctx context.Context, committeeID string) (*votesmarttypes.CommitteeGetCommitteeMembers, error)
 }
 
 type District interface {
 	// DistrictGetByOfficeState returns district IDs according to the office
 	// and state.
 	// See http://api.votesmart.org/docs/District.html for details.
-	DistrictGetByOfficeState(ctx context.Context, officeID, stateID, districtName string) (any, error)
+	DistrictGetByOfficeState(ctx context.Context, officeID, stateID, districtName string) (*votesmarttypes.DistrictGetByOfficeState, error)
 	// DistrictGetByZip returns district IDs according to the zip code.
 	// See http://api.votesmart.org/docs/District.html for details.
-	DistrictGetByZip(ctx context.Context, zip5, zip4 string) (any, error)
+	DistrictGetByZip(ctx context.Context, zip5, zip4 string) (*votesmarttypes.DistrictGetByZip, error)
 }
 
 type Election interface {
 	// ElectionGetElection returns district basic election data according to
 	// electionId
 	// See http://api.votesmart.org/docs/Election.html for details.
-	ElectionGetElection(ctx context.Context, electionID string) (any, error)
+	ElectionGetElection(ctx context.Context, electionID string) (*votesmarttypes.ElectionGetElection, error)
 	// ElectionGetElectionByYearState returns district basic election data
 	// according to year and stateid.
 	// See http://api.votesmart.org/docs/Election.html for details.
-	ElectionGetElectionByYearState(ctx context.Context, year, stateID string) (any, error)
+	ElectionGetElectionByYearState(ctx context.Context, year, stateID string) (*votesmarttypes.ElectionGetElectionByYearState, error)
 	// ElectionGetElectionByZip returns district basic election data according
 	// to zip code.
 	// See http://api.votesmart.org/docs/Election.html for details.
-	ElectionGetElectionByZip(ctx context.Context, zip5, zip4, year string) (any, error)
+	ElectionGetElectionByZip(ctx context.Context, zip5, zip4, year string) (*votesmarttypes.ElectionGetElectionByZip, error)
 	// ElectionGetStageCandidates returns district basic election data
 	// according to electionId and stageId. Per state lists of a Presidential
 	// election are available by specifying the stateId.
@@ -210,20 +210,20 @@ type Election interface {
 type Leadership interface {
 	// LeadershipGetPositions returns leadership positions by state and office.
 	// See http://api.votesmart.org/docs/Local.html for details.
-	LeadershipGetPositions(ctx context.Context, stateID, officeID string) (any, error)
+	LeadershipGetPositions(ctx context.Context, stateID, officeID string) (*votesmarttypes.LeadershipGetPositions, error)
 	// LeadershipGetOfficials returns officials that hold the leadership role
 	// in certain states.
 	// See http://api.votesmart.org/docs/Local.html for details.
-	LeadershipGetOfficials(ctx context.Context, leadershipID, stateID string) (any, error)
+	LeadershipGetOfficials(ctx context.Context, leadershipID, stateID string) (*votesmarttypes.LeadershipGetOfficials, error)
 }
 
 type Local interface {
 	// LocalGetCounties returns counties in a state
-	LocalGetCounties(ctx context.Context, stateID string) (any, error)
+	LocalGetCounties(ctx context.Context, stateID string) (*votesmarttypes.LocalGetCounties, error)
 	// LocalGetCities returns cities in a state
-	LocalGetCities(ctx context.Context, stateID string) (any, error)
+	LocalGetCities(ctx context.Context, stateID string) (*votesmarttypes.LocalGetCities, error)
 	// LocalGetOfficials returns officials for a locality
-	LocalGetOfficials(ctx context.Context, localID string) (any, error)
+	LocalGetOfficials(ctx context.Context, localID string) (*votesmarttypes.LocalGetOfficials, error)
 }
 
 type Npat interface {
@@ -235,52 +235,52 @@ type Npat interface {
 type Office interface {
 	// OfficeGetTypes returns all office types we keep track of.
 	// See http://api.votesmart.org/docs/Office.html for details.
-	OfficeGetTypes(ctx context.Context) (any, error)
+	OfficeGetTypes(ctx context.Context) (*votesmarttypes.OfficeGetTypes, error)
 	// OfficeGetBranches returns the branches of government and their IDs.
 	// See http://api.votesmart.org/docs/Office.html for details.
-	OfficeGetBranches(ctx context.Context) (any, error)
+	OfficeGetBranches(ctx context.Context) (*votesmarttypes.OfficeGetBranches, error)
 	// OfficeGetLevels returns the levels of government and their IDs.
 	// See http://api.votesmart.org/docs/Office.html for details.
-	OfficeGetLevels(ctx context.Context) (any, error)
+	OfficeGetLevels(ctx context.Context) (*votesmarttypes.OfficeGetLevels, error)
 	// OfficeGetOfficesByType returns offices we keep track of according to
 	// type.
 	// See http://api.votesmart.org/docs/Office.html for details.
-	OfficeGetOfficesByType(ctx context.Context, officeTypeID string) (any, error)
+	OfficeGetOfficesByType(ctx context.Context, officeTypeID string) (*votesmarttypes.OfficeGetOfficesByType, error)
 	// OfficeGetOfficesByLevel returns offices we keep track of according to
 	// level.
 	// See http://api.votesmart.org/docs/Office.html for details.
-	OfficeGetOfficesByLevel(ctx context.Context, levelID string) (any, error)
+	OfficeGetOfficesByLevel(ctx context.Context, levelID string) (*votesmarttypes.OfficeGetOfficesByLevel, error)
 	// OfficeGetOfficesByTypeLevel returns offices we keep track of according
 	// to type and level.
 	// See http://api.votesmart.org/docs/Office.html for details.
-	OfficeGetOfficesByTypeLevel(ctx context.Context, officeTypeID, officeLevelID string) (any, error)
+	OfficeGetOfficesByTypeLevel(ctx context.Context, officeTypeID, officeLevelID string) (*votesmarttypes.OfficeGetOfficesByTypeLevel, error)
 	// OfficeGetOfficesByBranchLevel returns offices we keep track of
 	// according to branch and level.
 	// See http://api.votesmart.org/docs/Office.html for details.
-	OfficeGetOfficesByBranchLevel(ctx context.Context, branchID, levelID string) (any, error)
+	OfficeGetOfficesByBranchLevel(ctx context.Context, branchID, levelID string) (*votesmarttypes.OfficeGetOfficesByBranchLevel, error)
 }
 
 type Officials interface {
 	// OfficialsGetStatewide returns a list of officials according to state
 	// representation.
 	// See http://api.votesmart.org/docs/Officials.html for details.
-	OfficialsGetStatewide(ctx context.Context, stateID string) (any, error)
+	OfficialsGetStatewide(ctx context.Context, stateID string) (*votesmarttypes.OfficialsGetStatewide, error)
 	// OfficialsGetByOfficeState returns a list of officials according to
 	// office and state representation.
 	// See http://api.votesmart.org/docs/Officials.html for details.
-	OfficialsGetByOfficeState(ctx context.Context, officeID, stateID string) (any, error)
+	OfficialsGetByOfficeState(ctx context.Context, officeID, stateID string) (*votesmarttypes.OfficialsGetByOfficeState, error)
 	// OfficialsGetByOfficeTypeState returns a list of officials according to
 	// office type and state representation.
 	// See http://api.votesmart.org/docs/Officials.html for details.
-	OfficialsGetByOfficeTypeState(ctx context.Context, officeTypeID, stateID string) (any, error)
+	OfficialsGetByOfficeTypeState(ctx context.Context, officeTypeID, stateID string) (*votesmarttypes.OfficialsGetByOfficeTypeState, error)
 	// OfficialsGetByLastname returns a list of officials according to a
 	// lastName match.
 	// See http://api.votesmart.org/docs/Officials.html for details.
-	OfficialsGetByLastname(ctx context.Context, lastName string) (any, error)
+	OfficialsGetByLastname(ctx context.Context, lastName string) (*votesmarttypes.OfficialsGetByLastname, error)
 	// OfficialsGetByLevenshtein returns a list of officials according to a
 	// fuzzy lastName match.
 	// See http://api.votesmart.org/docs/Officials.html for details.
-	OfficialsGetByLevenshtein(ctx context.Context, lastName string) (any, error)
+	OfficialsGetByLevenshtein(ctx context.Context, lastName string) (*votesmarttypes.OfficialsGetByLevenshtein, error)
 	// OfficialsGetByDistrict returns a list of officials according to the
 	// district they are running for.
 	// See http://api.votesmart.org/docs/Officials.html for details.
@@ -288,7 +288,7 @@ type Officials interface {
 	// OfficialsGetByZip returns a list of officials according to the zip code
 	// they represent.
 	// See http://api.votesmart.org/docs/Officials.html for details.
-	OfficialsGetByZip(ctx context.Context, zip5, zip4 string) (any, error)
+	OfficialsGetByZip(ctx context.Context, zip5, zip4 string) (*votesmarttypes.OfficialsGetByZip, error)
 }
 
 type Rating interface {
