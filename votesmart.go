@@ -134,31 +134,31 @@ type Candidates interface {
 	// CandidatesGetByOfficeState returns a list of candidates according to
 	// office and state representation.
 	// See http://api.votesmart.org/docs/Candidates.html for details.
-	CandidatesGetByOfficeState(ctx context.Context, officeID, stateID, electionYear, stageID string) (any, error)
+	CandidatesGetByOfficeState(ctx context.Context, officeID, stateID, electionYear, stageID string) (*votesmarttypes.CandidatesGetByOfficeState, error)
 	// CandidatesGetByOfficeTypeState returns a list of candidates according to
 	// office type and state representation.
 	// See http://api.votesmart.org/docs/Candidates.html for details.
-	CandidatesGetByOfficeTypeState(ctx context.Context, officeTypeID, stateID, electionYear, stageID string) (any, error)
+	CandidatesGetByOfficeTypeState(ctx context.Context, officeTypeID, stateID, electionYear, stageID string) (*votesmarttypes.CandidatesGetByOfficeTypeState, error)
 	// CandidatesGetByLastname returns a list of candidates according to a
 	// lastname match.
 	// See http://api.votesmart.org/docs/Candidates.html for details.
-	CandidatesGetByLastname(ctx context.Context, lastName, electionYear, stageID string) (any, error)
+	CandidatesGetByLastname(ctx context.Context, lastName, electionYear, stageID string) (*votesmarttypes.CandidatesGetByLastname, error)
 	// CandidatesGetByLevenshtein returns a list of candidates according to a
 	// fuzzy lastname match.
 	// See http://api.votesmart.org/docs/Candidates.html for details.
-	CandidatesGetByLevenshtein(ctx context.Context, lastName, electionyear, stageID string) (any, error)
+	CandidatesGetByLevenshtein(ctx context.Context, lastName, electionYear, stageID string) (*votesmarttypes.CandidatesGetByLastname, error)
 	// CandidatesGetByElection returns a list of candidates according to the
 	// election they are running in.
 	// See http://api.votesmart.org/docs/Candidates.html for details.
-	CandidatesGetByElection(ctx context.Context, electionID, stageID string) (any, error)
+	CandidatesGetByElection(ctx context.Context, electionID, stageID string) (*votesmarttypes.CandidatesGetByElection, error)
 	// CandidatesGetByDistrict returns a list of candidates according to the
 	// district they represent.
 	// See http://api.votesmart.org/docs/Candidates.html for details.
-	CandidatesGetByDistrict(ctx context.Context, districtID, electionYear, stageID string) (any, error)
+	CandidatesGetByDistrict(ctx context.Context, districtID, electionYear, stageID string) (*votesmarttypes.CandidatesGetByDistrict, error)
 	// CandidatesGetByZip returns actx returns according to the zip code they
 	// represent.
 	// See http://api.votesmart.org/docs/Candidates.html for details.
-	CandidatesGetByZip(ctx context.Context, zip5, zip4, electionYear, stageID string) (any, error)
+	CandidatesGetByZip(ctx context.Context, zip5, zip4, electionYear, stageID string) (*votesmarttypes.CandidatesGetByZip, error)
 }
 
 type Committee interface {

@@ -1,5 +1,15 @@
 package votesmarttypes
 
+type Office struct {
+	OfficeID       string `json:"officeId"`
+	OfficeTypeID   string `json:"officeTypeId"`
+	OfficeLevelID  string `json:"officeLevelId"`
+	OfficeBranchID string `json:"officeBranchId"`
+	Name           string `json:"name"`
+	Title          string `json:"title"`
+	ShortTitle     string `json:"shortTitle"`
+}
+
 type OfficeGetTypes struct {
 	OfficeTypes struct {
 		Type []struct {
@@ -31,56 +41,24 @@ type OfficeGetLevels struct {
 
 type OfficeGetOfficesByType struct {
 	Offices struct {
-		Office []struct {
-			OfficeID       string `json:"officeId"`
-			OfficeTypeID   string `json:"officeTypeId"`
-			OfficeLevelID  string `json:"officeLevelId"`
-			OfficeBranchID string `json:"officeBranchId"`
-			Name           string `json:"name"`
-			Title          string `json:"title"`
-			ShortTitle     string `json:"shortTitle"`
-		} `json:"office"`
+		Office []Office `json:"office"`
 	} `json:"offices"`
 }
 
 type OfficeGetOfficesByLevel struct {
 	Offices struct {
-		Office []struct {
-			OfficeID       string `json:"officeId"`
-			OfficeTypeID   string `json:"officeTypeId"`
-			OfficeLevelID  string `json:"officeLevelId"`
-			OfficeBranchID string `json:"officeBranchId"`
-			Name           string `json:"name"`
-			Title          string `json:"title"`
-			ShortTitle     string `json:"shortTitle"`
-		} `json:"office"`
+		Office []Office `json:"office"`
 	} `json:"offices"`
 }
 
 type OfficeGetOfficesByTypeLevel struct {
 	Offices struct {
-		Office []struct {
-			OfficeID       string `json:"officeId"`
-			OfficeTypeID   string `json:"officeTypeId"`
-			OfficeLevelID  string `json:"officeLevelId"`
-			OfficeBranchID string `json:"officeBranchId"`
-			Name           string `json:"name"`
-			Title          string `json:"title"`
-			ShortTitle     string `json:"shortTitle"`
-		} `json:"office"`
+		Office []Office `json:"office"`
 	} `json:"offices"`
 }
 
 type OfficeGetOfficesByBranchLevel struct {
 	Offices struct {
-		Office []struct {
-			OfficeID       string `json:"officeId"`
-			OfficeTypeID   string `json:"officeTypeId"`
-			OfficeLevelID  string `json:"officeLevelId"`
-			OfficeBranchID string `json:"officeBranchId"`
-			Name           string `json:"name"`
-			Title          string `json:"title"`
-			ShortTitle     string `json:"shortTitle"`
-		} `json:"office"`
+		Office []Office `json:"office"`
 	} `json:"offices"`
 }
