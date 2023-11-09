@@ -14,6 +14,6 @@ func TestAPI(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	res, err := c.CandidatesGetByOfficeState(context.Background(), "1", "", "", "")
+	res, err := c.RatingGetSig(context.Background(), "2709")
 	log.Println(res, err)
 }

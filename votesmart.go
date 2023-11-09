@@ -82,15 +82,15 @@ type Address interface {
 	// AddressGetCampaign returns campaign office(s) and basic candidate
 	// information for the specified candidate.
 	// See http://api.votesmart.org/docs/Address.html for details.
-	AddressGetCampaign(ctx context.Context, candidateID string) (any, error)
+	AddressGetCampaign(ctx context.Context, candidateID string) (*votesmarttypes.AddressGetCampaign, error)
 	// AddressGetCampaignWebAddress returns the campaign office's Web
 	// address(es) and basic candidate information for the specified candidate.
 	// See http://api.votesmart.org/docs/Address.html for details.
-	AddressGetCampaignWebAddress(ctx context.Context, candidateID string) (any, error)
+	AddressGetCampaignWebAddress(ctx context.Context, candidateID string) (*votesmarttypes.AddressGetCampaignWebAddress, error)
 	// AddressGetCampaignByElection returns campaign office(s) and basic
 	// candidate information for the specified election.
 	// See http://api.votesmart.org/docs/Address.html for details.
-	AddressGetCampaignByElection(ctx context.Context, electionID string) (any, error)
+	AddressGetCampaignByElection(ctx context.Context, electionID string) (*votesmarttypes.AddressGetCampaignByElection, error)
 	// AddressGetOffice returns office(s) and basic candidate information
 	// for the specified candidate.
 	// See http://api.votesmart.org/docs/Address.html for details.
@@ -119,15 +119,15 @@ type BallotMeasure interface {
 type CandidateBio interface {
 	// CandidateBioGetBio returns the main bio for each candidate.
 	// See http://api.votesmart.org/docs/CandidateBio.html for details.
-	CandidateBioGetBio(ctx context.Context, candidateID string) (any, error)
+	CandidateBioGetBio(ctx context.Context, candidateID string) (*votesmarttypes.CandidateBioGetBio, error)
 	// CandidateBioGetDetailedBio returns the education, profession, political,
 	// orgMembership, and congMembership elements.
 	// See http://api.votesmart.org/docs/CandidateBio.html for details.
-	CandidateBioGetDetailedBio(ctx context.Context, candidateID string) (any, error)
-	// CandidatedBioGetAdditionalBio returns the extended bio for each
+	CandidateBioGetDetailedBio(ctx context.Context, candidateID string) (*votesmarttypes.CandidateBioGetDetailedBio, error)
+	// CandidateBioGetAdditionalBio returns the extended bio for each
 	// candidate that has one.
 	// See http://api.votesmart.org/docs/CandidateBio.html for details.
-	CandidatedBioGetAdditionalBio(ctx context.Context, candidateID string) (any, error)
+	CandidateBioGetAdditionalBio(ctx context.Context, candidateID string) (*votesmarttypes.CandidateBioGetAdditionalBio, error)
 }
 
 type Candidates interface {
@@ -229,7 +229,7 @@ type Local interface {
 type Npat interface {
 	// NpatGetNpat returns the candidates most recently filled out NPAT/PCT.
 	// See http://api.votesmart.org/docs/Npat.html for details.
-	NpatGetNpat(ctx context.Context, candidateID string) (any, error)
+	NpatGetNpat(ctx context.Context, candidateID string) (*votesmarttypes.NpatGetNpat, error)
 }
 
 type Office interface {
@@ -295,24 +295,24 @@ type Rating interface {
 	// RatingGetCategories returns categories that contain released ratings
 	// according to state.
 	// See http://api.votesmart.org/docs/Rating.html for details.
-	RatingGetCategories(ctx context.Context, stateID string) (any, error)
+	RatingGetCategories(ctx context.Context, stateID string) (*votesmarttypes.RatingGetCategories, error)
 	// RatingGetSigList returns Special Interest Groups according to category
 	// and state.
 	// See http://api.votesmart.org/docs/Rating.html for details.
-	RatingGetSigList(ctx context.Context, categoryID, stateID string) (any, error)
+	RatingGetSigList(ctx context.Context, categoryID, stateID string) (*votesmarttypes.RatingGetSigList, error)
 	// RatingGetSig returns detailed information an a Special Interest Group.
 	// See http://api.votesmart.org/docs/Rating.html for details.
-	RatingGetSig(ctx context.Context, sigID string) (any, error)
+	RatingGetSig(ctx context.Context, sigID string) (*votesmarttypes.RatingGetSig, error)
 	// RatingGetSigRatings returns all ratings(scorecards) by a Special
 	// Interest Group.
 	// See http://api.votesmart.org/docs/Rating.html for details.
-	RatingGetSigRatings(ctx context.Context, sigID string) (any, error)
+	RatingGetSigRatings(ctx context.Context, sigID string) (*votesmarttypes.RatingGetSigRatings, error)
 	// RatingGetCandidateRating returns a candidate's rating by an SIG.
 	// See http://api.votesmart.org/docs/Rating.html for details.
-	RatingGetCandidateRating(ctx context.Context, candidateID, sigID string) (any, error)
+	RatingGetCandidateRating(ctx context.Context, candidateID, sigID string) (*votesmarttypes.RatingGetCandidateRating, error)
 	// RatingGetRating returns all candidate ratings from a scorecard by an SIG.
 	// See http://api.votesmart.org/docs/Rating.html for details.
-	RatingGetRating(ctx context.Context, ratingID string) (any, error)
+	RatingGetRating(ctx context.Context, ratingID string) (*votesmarttypes.RatingGetRating, error)
 }
 
 type State interface {
