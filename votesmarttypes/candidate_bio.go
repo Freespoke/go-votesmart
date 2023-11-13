@@ -1,5 +1,7 @@
 package votesmarttypes
 
+// CandidateBioGetBio is the response message for CandidateBio.getBio.
+// See http://api.votesmart.org/docs/CandidateBio for usage details.
 type CandidateBioGetBio struct {
 	Bio struct {
 		Candidate struct {
@@ -51,6 +53,12 @@ type CandidateBioGetBio struct {
 	} `json:"bio"`
 }
 
+func (CandidateBioGetBio) Method() string {
+	return "CandidateBio.getBio"
+}
+
+// CandidateBioGetDetailedBio is the response message for CandidateBio.getDetailedBio.
+// See http://api.votesmart.org/docs/CandidateBio for usage details.
 type CandidateBioGetDetailedBio struct {
 	Bio struct {
 		Candidate struct {
@@ -152,6 +160,12 @@ type CandidateBioGetDetailedBio struct {
 	} `json:"bio"`
 }
 
+func (CandidateBioGetDetailedBio) Method() string {
+	return "CandidateBio.getDetailedBio"
+}
+
+// CandidateBioGetAdditionalBio is the response message for CandidateBio.getAdditionalBio.
+// See http://api.votesmart.org/docs/CandidateBio for usage details.
 type CandidateBioGetAdditionalBio struct {
 	AddlBio struct {
 		Candidate struct {
@@ -169,4 +183,8 @@ type CandidateBioGetAdditionalBio struct {
 			} `json:"item"`
 		} `json:"additional"`
 	} `json:"addlBio"`
+}
+
+func (CandidateBioGetAdditionalBio) Method() string {
+	return "CandidateBio.getAdditionalBio"
 }

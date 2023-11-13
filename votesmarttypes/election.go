@@ -18,20 +18,38 @@ type Election struct {
 	} `json:"stage"`
 }
 
+// ElectionGetElection is the response message for Election.getElection.
+// See http://api.votesmart.org/docs/Election.html for usage details.
 type ElectionGetElection struct {
 	Elections struct {
 		Election Election `json:"election"`
 	} `json:"elections"`
 }
 
+func (ElectionGetElection) Method() string {
+	return "Election.getElection"
+}
+
+// ElectionGetElectionByYearState is the response message for Election.getElectionByYearState.
+// See http://api.votesmart.org/docs/Election.html for usage details.
 type ElectionGetElectionByYearState struct {
 	Elections struct {
 		Election []Election `json:"election"`
 	} `json:"elections"`
 }
 
+func (ElectionGetElectionByYearState) Method() string {
+	return "Election.getElectionByYearState"
+}
+
+// ElectionGetElectionByZip is the response message for Election.getElectionByZip.
+// See http://api.votesmart.org/docs/Election.html for usage details.
 type ElectionGetElectionByZip struct {
 	Elections struct {
 		Election []Election `json:"election"`
 	} `json:"elections"`
+}
+
+func (ElectionGetElectionByZip) Method() string {
+	return "Election.getElectionByZip"
 }

@@ -1,5 +1,7 @@
 package votesmarttypes
 
+// AddressGetCampaign is the response message for Address.getCampaign.
+// See http://api.votesmart.org/docs/Address.html for usage details.
 type AddressGetCampaign struct {
 	Address struct {
 		Candidate struct {
@@ -36,6 +38,12 @@ type AddressGetCampaign struct {
 	} `json:"address"`
 }
 
+func (AddressGetCampaign) Method() string {
+	return "Address.getCampaign"
+}
+
+// AddressGetCampaignWebAddress is the response message for Address.getCampaignWebAddress.
+// See http://api.votesmart.org/docs/Address.html for usage details.
 type AddressGetCampaignWebAddress struct {
 	Webaddress struct {
 		Candidate struct {
@@ -54,6 +62,12 @@ type AddressGetCampaignWebAddress struct {
 	} `json:"webaddress"`
 }
 
+func (AddressGetCampaignWebAddress) Method() string {
+	return "Address.getCampaignWebAddress"
+}
+
+// AddressGetCampaignByElection is the response message for Address.getCampaignByElection.
+// See http://api.votesmart.org/docs/Address.html for usage details.
 type AddressGetCampaignByElection struct {
 	Address struct {
 		Office []struct {
@@ -89,4 +103,8 @@ type AddressGetCampaignByElection struct {
 			} `json:"notes"`
 		} `json:"office"`
 	} `json:"address"`
+}
+
+func (AddressGetCampaignByElection) Method() string {
+	return "Address.getCampaignByElection"
 }

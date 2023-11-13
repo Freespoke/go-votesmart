@@ -1,5 +1,7 @@
 package votesmarttypes
 
+// NpatGetNpat is the response message for Npat.getNpat.
+// See http://api.votesmart.org/docs/Npat.html for usage details.
 type NpatGetNpat struct {
 	Npat struct {
 		CandidateID   string `json:"candidateId"`
@@ -14,4 +16,8 @@ type NpatGetNpat struct {
 		// TODO: Fill this in with a real data representation.
 		Section any `json:"section"`
 	} `json:"npat"`
+}
+
+func (NpatGetNpat) Method() string {
+	return "Npat.getNpat"
 }

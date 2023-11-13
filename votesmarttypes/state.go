@@ -1,5 +1,7 @@
 package votesmarttypes
 
+// StateGetStateIDs is the response message for State.getStateIDs.
+// See http://api.votesmart.org/docs/State.html for usage details.
 type StateGetStateIDs struct {
 	StateList struct {
 		List struct {
@@ -11,6 +13,12 @@ type StateGetStateIDs struct {
 	} `json:"stateList"`
 }
 
+func (StateGetStateIDs) Method() string {
+	return "State.getStateIDs"
+}
+
+// StateGetState is the response message for State.getState.
+// See http://api.votesmart.org/docs/State.html for usage details.
 type StateGetState struct {
 	State struct {
 		Details struct {
@@ -47,4 +55,8 @@ type StateGetState struct {
 			UsCircuit   string `json:"usCircuit"`
 		} `json:"details"`
 	} `json:"state"`
+}
+
+func (StateGetState) Method() string {
+	return "State.getState"
 }

@@ -1,5 +1,7 @@
 package votesmarttypes
 
+// CommitteeGetTypes is the response message for Committee.getTypes.
+// See http://api.votesmart.org/docs/Committee.html for usage details.
 type CommitteeGetTypes struct {
 	CommitteeTypes struct {
 		Type []struct {
@@ -9,6 +11,12 @@ type CommitteeGetTypes struct {
 	} `json:"committeeTypes"`
 }
 
+func (CommitteeGetTypes) Method() string {
+	return "Committee.getTypes"
+}
+
+// CommitteeGetCommitteesByTypeState is the response message for Committee.getCommitteesByTypeState.
+// See http://api.votesmart.org/docs/Committee.html for usage details.
 type CommitteeGetCommitteesByTypeState struct {
 	Committees struct {
 		Committee []struct {
@@ -21,6 +29,12 @@ type CommitteeGetCommitteesByTypeState struct {
 	} `json:"committees"`
 }
 
+func (CommitteeGetCommitteesByTypeState) Method() string {
+	return "Committee.getCommitteesByTypeState"
+}
+
+// CommitteeGetCommittee is the response message for Committee.getCommittee.
+// See http://api.votesmart.org/docs/Committee.html for usage details.
 type CommitteeGetCommittee struct {
 	Committee struct {
 		CommitteeID     string `json:"committeeId"`
@@ -44,6 +58,12 @@ type CommitteeGetCommittee struct {
 	} `json:"committee"`
 }
 
+func (CommitteeGetCommittee) Method() string {
+	return "Committee.getCommittee"
+}
+
+// CommitteeGetCommitteeMembers is the response message for Committee.getCommitteeMembers.
+// See http://api.votesmart.org/docs/Committee.html for usage details.
 type CommitteeGetCommitteeMembers struct {
 	CommitteeMembers struct {
 		Committee struct {
@@ -62,4 +82,8 @@ type CommitteeGetCommitteeMembers struct {
 			Position    string `json:"position"`
 		} `json:"member"`
 	} `json:"committeeMembers"`
+}
+
+func (CommitteeGetCommitteeMembers) Method() string {
+	return "Committee.getCommitteeMembers"
 }

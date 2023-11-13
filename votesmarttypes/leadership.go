@@ -1,5 +1,7 @@
 package votesmarttypes
 
+// LeadershipGetPositions is the response message for Leadership.getPositions.
+// See http://api.votesmart.org/docs/Leadership.html for usage details.
 type LeadershipGetPositions struct {
 	Leadership struct {
 		Position []struct {
@@ -11,6 +13,12 @@ type LeadershipGetPositions struct {
 	} `json:"leadership"`
 }
 
+func (LeadershipGetPositions) Method() string {
+	return "Leadership.getPositions"
+}
+
+// LeadershipGetOfficials is the response message for Leadership.getOfficials.
+// See http://api.votesmart.org/docs/Leadership.html for usage details.
 type LeadershipGetOfficials struct {
 	Leaders struct {
 		Leader struct {
@@ -24,4 +32,8 @@ type LeadershipGetOfficials struct {
 			Title       string `json:"title"`
 		} `json:"leader"`
 	} `json:"leaders"`
+}
+
+func (LeadershipGetOfficials) Method() string {
+	return "Leadership.getOfficials"
 }

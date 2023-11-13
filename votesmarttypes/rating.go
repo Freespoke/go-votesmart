@@ -1,5 +1,7 @@
 package votesmarttypes
 
+// RatingGetCategories is the response message for Rating.getCategories.
+// See http://api.votesmart.org/docs/Rating.html for usage details.
 type RatingGetCategories struct {
 	Categories struct {
 		Category []struct {
@@ -9,6 +11,12 @@ type RatingGetCategories struct {
 	} `json:"categories"`
 }
 
+func (RatingGetCategories) Method() string {
+	return "Rating.getCategories"
+}
+
+// RatingGetSigList is the response message for Rating.getSigList.
+// See http://api.votesmart.org/docs/Rating.html for usage details.
 type RatingGetSigList struct {
 	Sigs struct {
 		Sig []struct {
@@ -19,6 +27,12 @@ type RatingGetSigList struct {
 	} `json:"sigs"`
 }
 
+func (RatingGetSigList) Method() string {
+	return "Rating.getSigList"
+}
+
+// RatingGetSig is the response message for Rating.getSig.
+// See http://api.votesmart.org/docs/Rating.html for usage details.
 type RatingGetSig struct {
 	Sig struct {
 		SigID       string `json:"sigId"`
@@ -39,6 +53,12 @@ type RatingGetSig struct {
 	} `json:"sig"`
 }
 
+func (RatingGetSig) Method() string {
+	return "Rating.getSig"
+}
+
+// RatingGetSigRatings is the response message for Rating.getSigRatings.
+// See http://api.votesmart.org/docs/Rating.html for usage details.
 type RatingGetSigRatings struct {
 	SigRatings struct {
 		Sig struct {
@@ -54,6 +74,12 @@ type RatingGetSigRatings struct {
 	} `json:"sigRatings"`
 }
 
+func (RatingGetSigRatings) Method() string {
+	return "Rating.getSigRatings"
+}
+
+// RatingGetCandidateRating is the response message for Rating.getCandidateRating.
+// See http://api.votesmart.org/docs/Rating.html for usage details.
 type RatingGetCandidateRating struct {
 	CandidateRating struct {
 		Candidate struct {
@@ -81,6 +107,12 @@ type RatingGetCandidateRating struct {
 	} `json:"candidateRating"`
 }
 
+func (RatingGetCandidateRating) Method() string {
+	return "Rating.getCandidateRating"
+}
+
+// RatingGetRating is the response message for Rating.getRating.
+// See http://api.votesmart.org/docs/Rating.html for usage details.
 type RatingGetRating struct {
 	Rating struct {
 		CandidateRating []struct {
@@ -88,4 +120,8 @@ type RatingGetRating struct {
 			Rating      string `json:"rating"`
 		} `json:"candidateRating"`
 	} `json:"rating"`
+}
+
+func (RatingGetRating) Method() string {
+	return "Rating.getRating"
 }

@@ -3,9 +3,11 @@ package votesmart_test
 import (
 	"context"
 	"log"
+	"net/url"
 	"testing"
 
 	"dev.freespoke.com/go-votesmart"
+	"dev.freespoke.com/go-votesmart/votesmarttypes"
 )
 
 func TestAPI(t *testing.T) {
@@ -14,6 +16,9 @@ func TestAPI(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	res, err := c.RatingGetSig(context.Background(), "2709")
-	log.Println(res, err)
+	var a votesmarttypes.AddressGetCampaign
+	v := url.Values{}
+	v.Add("candidateId", "15723")
+	log.Println(c.Invoke(context.Background(), &v, &a))
+	log.Println(a)
 }

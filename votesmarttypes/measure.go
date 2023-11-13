@@ -1,5 +1,7 @@
 package votesmarttypes
 
+// MeasureGetMeasuresByYearState is the response message for Measure.getMeasuresByYearState.
+// See http://api.votesmart.org/docs/Measure.html for usage details.
 type MeasureGetMeasuresByYearState struct {
 	Measures struct {
 		Measure []struct {
@@ -11,6 +13,12 @@ type MeasureGetMeasuresByYearState struct {
 	} `json:"measures"`
 }
 
+func (MeasureGetMeasuresByYearState) Method() string {
+	return "Measure.getMeasuresByYearState"
+}
+
+// MeasureGetMeasure is the response message for Measure.getMeasure.
+// See http://api.votesmart.org/docs/Measure.html for usage details.
 type MeasureGetMeasure struct {
 	Measure struct {
 		MeasureID    string `json:"measureId"`
@@ -30,4 +38,8 @@ type MeasureGetMeasure struct {
 		No           string `json:"no"`
 		Outcome      string `json:"outcome"`
 	} `json:"measure"`
+}
+
+func (MeasureGetMeasure) Method() string {
+	return "Measure.getMeasure"
 }

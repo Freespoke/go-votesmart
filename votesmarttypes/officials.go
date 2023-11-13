@@ -1,5 +1,7 @@
 package votesmarttypes
 
+// OfficialsGetStatewide is the response message for Officials.getStatewide.
+// See http://api.votesmart.org/docs/Officials.html for usage details.
 type OfficialsGetStatewide struct {
 	CandidateList struct {
 		Candidate []struct {
@@ -38,6 +40,12 @@ type OfficialsGetStatewide struct {
 	} `json:"candidateList"`
 }
 
+func (OfficialsGetStatewide) Method() string {
+	return "Officials.getStatewide"
+}
+
+// OfficialsGetByOfficeState is the response message for Officials.getByOfficeState.
+// See http://api.votesmart.org/docs/Officials.html for usage details.
 type OfficialsGetByOfficeState struct {
 	CandidateList struct {
 		Candidate struct {
@@ -76,6 +84,12 @@ type OfficialsGetByOfficeState struct {
 	} `json:"candidateList"`
 }
 
+func (OfficialsGetByOfficeState) Method() string {
+	return "Officials.getByOfficeState"
+}
+
+// OfficialsGetByOfficeTypeState is the response message for Officials.getByOfficeTypeState.
+// See http://api.votesmart.org/docs/Officials.html for usage details.
 type OfficialsGetByOfficeTypeState struct {
 	CandidateList struct {
 		Candidate []struct {
@@ -114,6 +128,12 @@ type OfficialsGetByOfficeTypeState struct {
 	} `json:"candidateList"`
 }
 
+func (OfficialsGetByOfficeTypeState) Method() string {
+	return "Officials.getByOfficeTypeState"
+}
+
+// OfficialsGetByLastname is the response message for Officials.getByLastname.
+// See http://api.votesmart.org/docs/Officials.html for usage details.
 type OfficialsGetByLastname struct {
 	CandidateList struct {
 		Candidate struct {
@@ -152,6 +172,12 @@ type OfficialsGetByLastname struct {
 	} `json:"candidateList"`
 }
 
+func (OfficialsGetByLastname) Method() string {
+	return "Officials.getByLastname"
+}
+
+// OfficialsGetByLevenshtein is the response message for Officials.getByLevenshtein.
+// See http://api.votesmart.org/docs/Officials.html for usage details.
 type OfficialsGetByLevenshtein struct {
 	CandidateList struct {
 		Candidate struct {
@@ -190,6 +216,12 @@ type OfficialsGetByLevenshtein struct {
 	} `json:"candidateList"`
 }
 
+func (OfficialsGetByLevenshtein) Method() string {
+	return "Officials.getByLevenshtein"
+}
+
+// OfficialsGetByZip is the response message for Officials.getByZip.
+// See http://api.votesmart.org/docs/Officials.html for usage details.
 type OfficialsGetByZip struct {
 	CandidateList struct {
 		ZipMessage string `json:"zipMessage"`
@@ -212,4 +244,8 @@ type OfficialsGetByZip struct {
 			OfficeTypeID       string `json:"officeTypeId"`
 		} `json:"candidate"`
 	} `json:"candidateList"`
+}
+
+func (OfficialsGetByZip) Method() string {
+	return "Officials.getByZip"
 }
