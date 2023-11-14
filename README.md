@@ -42,6 +42,6 @@ Refer to the [API Documentation](http://api.votesmart.org/docs/index.html) for
 required and optional parameters. Do not set `o` or `key`, as the library
 handles these for you.
 
-### License
+## License
 
 MIT
