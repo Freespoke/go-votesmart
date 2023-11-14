@@ -3,6 +3,7 @@
 A golang client for the [Votesmart](http://api.votesmart.org/docs/index.html) API.
 
 [![Go Reference](https://pkg.go.dev/badge/dev.freespoke.com/go-votesmart.svg)](https://pkg.go.dev/dev.freespoke.com/go-votesmart)
+[![Actions Status](https://github.com/freespoke/go-votesmart/workflows/test/badge.svg)](https://github.com/freespoke/go-votesmart/actions)
 
 ## Installation
 
