@@ -20,8 +20,8 @@ func TestAPI(t *testing.T) {
 	}
 
 	svr := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if r.URL.Query().Get("key") == "" {
-			t.Fatal("missing api key")
+		if r.URL.Query().Get("key") != dummyKey {
+			t.Fatal("missing or incorrect api key")
 			return
 		}
 
