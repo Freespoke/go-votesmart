@@ -74,7 +74,7 @@ func (CandidatesGetByLastname) Method() string {
 // See http://api.votesmart.org/docs/Candidates.html for usage details.
 type CandidatesGetByLevenshtein struct {
 	CandidateList struct {
-		Candidate Candidate `json:"candidate"`
+		Candidate []Candidate `json:"candidate"`
 	} `json:"candidateList"`
 }
 

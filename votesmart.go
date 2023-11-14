@@ -74,11 +74,21 @@ type client struct {
 }
 
 func (c *client) Invoke(ctx context.Context, values *url.Values, dst Method) error {
-	values.Add("key", c.APIKey)
-	values.Add("o", "JSON")
+	requestValues := url.Values{}
+
+	if values != nil {
+		for k, v := range *values {
+			for _, vv := range v {
+				requestValues.Add(k, vv)
+			}
+		}
+	}
+
+	requestValues.Add("key", c.APIKey)
+	requestValues.Add("o", "JSON")
 	requestURL := *c.BaseURL
 	requestURL.Path = dst.Method()
-	requestURL.RawQuery = values.Encode()
+	requestURL.RawQuery = requestValues.Encode()
 
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, requestURL.String(), nil)
 	if err != nil {

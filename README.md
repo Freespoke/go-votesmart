@@ -2,6 +2,8 @@
 
 A golang client for the [Votesmart](http://api.votesmart.org/docs/index.html) API.
 
+[![Go Reference](https://pkg.go.dev/badge/dev.freespoke.com/go-votesmart.svg)](https://pkg.go.dev/dev.freespoke.com/go-votesmart)
+
 ## Installation
 
 ```sh
@@ -34,6 +36,10 @@ if err := client.Invoke(context.Background(), &vals, &resp); err != nil {
 
 log.Println(resp)
 ```
+
+Refer to the [API Documentation](http://api.votesmart.org/docs/index.html) for
+required and optional parameters. Do not set `o` or `key`, as the library
+handles these for you.
 
 ### License
 
