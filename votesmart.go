@@ -3,7 +3,6 @@ package votesmart
 import (
 	"context"
 	"encoding/json"
-	"errors"
 	"fmt"
 	"io"
 	"net/http"
@@ -67,6 +66,14 @@ func WithBaseURL(v string) Option {
 	}
 }
 
+type Error struct {
+	ErrorMessage string `json:"errorMessage"`
+}
+
+func (e Error) Error() string {
+	return e.ErrorMessage
+}
+
 type client struct {
 	HTTP    *http.Client
 	BaseURL *url.URL
@@ -112,9 +119,7 @@ func (c *client) Invoke(ctx context.Context, values *url.Values, dst Method) err
 	}
 
 	var errorval struct {
-		Error struct {
-			ErrorMessage string `json:"errorMessage"`
-		} `json:"error"`
+		Error Error `json:"error"`
 	}
 
 	if err := json.Unmarshal(b, &errorval); err != nil {
@@ -122,7 +127,7 @@ func (c *client) Invoke(ctx context.Context, values *url.Values, dst Method) err
 	}
 
 	if errorval.Error.ErrorMessage != "" {
-		return errors.New(errorval.Error.ErrorMessage)
+		return errorval.Error
 	}
 
 	return json.Unmarshal(b, dst)
