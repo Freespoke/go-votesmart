@@ -103,3 +103,52 @@ func TestWithParams(t *testing.T) {
 		t.Fatal("unexpected value in first candidate")
 	}
 }
+
+func TestElectionID(t *testing.T) {
+	dummyKey := "apiKey"
+	b, err := os.ReadFile("testdata/candidates_get_by_electionid.json")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	svr := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Query().Get("key") == "" {
+			t.Fatal("missing api key")
+			return
+		}
+
+		if r.URL.Query().Get("o") != "JSON" {
+			t.Fatal("missing output set to json")
+			return
+		}
+
+		if r.URL.Query().Get("electionId") != "4823" {
+			t.Fatal("missing or incorrect electionId param")
+		}
+
+		_, err = w.Write(b)
+		if err != nil {
+			t.Fatal(err)
+		}
+	}))
+
+	c, err := votesmart.New(dummyKey, votesmart.WithBaseURL(svr.URL), votesmart.WithClient(svr.Client()))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	var a votesmarttypes.CandidatesGetByElection
+	v := url.Values{}
+	v.Add("electionId", "4823")
+	if err := c.Invoke(context.Background(), &v, &a); err != nil {
+		t.Fatal("err not nil", err)
+	}
+
+	if len(a.CandidateList.Candidate) == 0 {
+		t.Fatal("response was empty")
+	}
+
+	if a.CandidateList.Candidate[0].FirstName != "Dustin" {
+		t.Fatal("unexpected value in first candidate")
+	}
+}
