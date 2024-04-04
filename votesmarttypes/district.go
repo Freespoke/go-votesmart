@@ -26,7 +26,7 @@ type DistrictGetByZip struct {
 		ZipMessage        string     `json:"zipMessage"`
 		District          []District `json:"district"`
 		ElectionDistricts struct {
-			District []District `json:"district"`
+			District MaybeList[District] `json:"district"`
 		} `json:"electionDistricts"`
 	} `json:"districtList"`
 }

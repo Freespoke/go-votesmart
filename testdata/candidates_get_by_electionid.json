@@ -1,0 +1,37 @@
+{
+    "candidateList": {
+        "candidate": {
+            "candidateId": "48307",
+            "firstName": "Dustin",
+            "nickName": "Dusty",
+            "middleName": "",
+            "preferredName": "Dusty",
+            "lastName": "Johnson",
+            "suffix": "",
+            "title": "Representative",
+            "ballotName": "Dusty Johnson",
+            "electionParties": "Republican",
+            "electionStatus": "Running",
+            "electionStage": "Primary",
+            "electionDistrictId": "26608",
+            "electionDistrictName": "At-Large",
+            "electionOffice": "U.S. House",
+            "electionOfficeId": "5",
+            "electionStateId": "SD",
+            "electionOfficeTypeId": "C",
+            "electionYear": "2024",
+            "electionSpecial": "f",
+            "electionDate": "06\/04\/2024",
+            "officeParties": "Republican",
+            "officeStatus": "active",
+            "officeDistrictId": "26608",
+            "officeDistrictName": "At-Large",
+            "officeStateId": "SD",
+            "officeId": "5",
+            "officeName": "U.S. House",
+            "officeTypeId": "C",
+            "runningMateId": "",
+            "runningMateName": ""
+        }
+    }
+}

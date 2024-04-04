@@ -61,7 +61,7 @@ func (OfficeGetLevels) Method() string {
 // See http://api.votesmart.org/docs/Office.html for usage details.
 type OfficeGetOfficesByType struct {
 	Offices struct {
-		Office []Office `json:"office"`
+		Office MaybeList[Office] `json:"office"`
 	} `json:"offices"`
 }
 
@@ -73,7 +73,7 @@ func (OfficeGetOfficesByType) Method() string {
 // See http://api.votesmart.org/docs/Office.html for usage details.
 type OfficeGetOfficesByLevel struct {
 	Offices struct {
-		Office []Office `json:"office"`
+		Office MaybeList[Office] `json:"office"`
 	} `json:"offices"`
 }
 
@@ -85,7 +85,7 @@ func (OfficeGetOfficesByLevel) Method() string {
 // See http://api.votesmart.org/docs/Office.html for usage details.
 type OfficeGetOfficesByTypeLevel struct {
 	Offices struct {
-		Office []Office `json:"office"`
+		Office MaybeList[Office] `json:"office"`
 	} `json:"offices"`
 }
 
@@ -97,7 +97,7 @@ func (OfficeGetOfficesByTypeLevel) Method() string {
 // See http://api.votesmart.org/docs/Office.html for usage details.
 type OfficeGetOfficesByBranchLevel struct {
 	Offices struct {
-		Office []Office `json:"office"`
+		Office MaybeList[Office] `json:"office"`
 	} `json:"offices"`
 }
 

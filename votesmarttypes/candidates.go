@@ -38,7 +38,7 @@ type Candidate struct {
 // See http://api.votesmart.org/docs/Candidates.html for usage details.
 type CandidatesGetByOfficeState struct {
 	CandidateList struct {
-		Candidate []Candidate `json:"candidate"`
+		Candidate MaybeList[Candidate] `json:"candidate"`
 	} `json:"candidateList"`
 }
 
@@ -50,7 +50,7 @@ func (CandidatesGetByOfficeState) Method() string {
 // See http://api.votesmart.org/docs/Candidates.html for usage details.
 type CandidatesGetByOfficeTypeState struct {
 	CandidateList struct {
-		Candidate []Candidate `json:"candidate"`
+		Candidate MaybeList[Candidate] `json:"candidate"`
 	} `json:"candidateList"`
 }
 
@@ -62,7 +62,7 @@ func (CandidatesGetByOfficeTypeState) Method() string {
 // See http://api.votesmart.org/docs/Candidates.html for usage details.
 type CandidatesGetByLastname struct {
 	CandidateList struct {
-		Candidate []Candidate `json:"candidate"`
+		Candidate MaybeList[Candidate] `json:"candidate"`
 	} `json:"candidateList"`
 }
 
@@ -74,7 +74,7 @@ func (CandidatesGetByLastname) Method() string {
 // See http://api.votesmart.org/docs/Candidates.html for usage details.
 type CandidatesGetByLevenshtein struct {
 	CandidateList struct {
-		Candidate []Candidate `json:"candidate"`
+		Candidate MaybeList[Candidate] `json:"candidate"`
 	} `json:"candidateList"`
 }
 
@@ -86,7 +86,7 @@ func (CandidatesGetByLevenshtein) Method() string {
 // See http://api.votesmart.org/docs/Candidates.html for usage details.
 type CandidatesGetByElection struct {
 	CandidateList struct {
-		Candidate []Candidate `json:"candidate"`
+		Candidate MaybeList[Candidate] `json:"candidate"`
 	} `json:"candidateList"`
 }
 
@@ -98,7 +98,7 @@ func (CandidatesGetByElection) Method() string {
 // See http://api.votesmart.org/docs/Candidates.html for usage details.
 type CandidatesGetByDistrict struct {
 	CandidateList struct {
-		Candidate []Candidate `json:"candidate"`
+		Candidate MaybeList[Candidate] `json:"candidate"`
 	} `json:"candidateList"`
 }
 
@@ -110,8 +110,8 @@ func (CandidatesGetByDistrict) Method() string {
 // See http://api.votesmart.org/docs/Candidates.html for usage details.
 type CandidatesGetByZip struct {
 	CandidateList struct {
-		ZipMessage string      `json:"zipMessage"`
-		Candidate  []Candidate `json:"candidate"`
+		ZipMessage string               `json:"zipMessage"`
+		Candidate  MaybeList[Candidate] `json:"candidate"`
 	} `json:"candidateList"`
 }
 
